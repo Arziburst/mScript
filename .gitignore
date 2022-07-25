@@ -3,6 +3,7 @@
 # Directories at root of a first
 /node_modules/
 /build/
+/mScript/
 /coverage/
 /flow-coverage/
 /dist/

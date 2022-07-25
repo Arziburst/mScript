@@ -6,6 +6,6 @@
         "noImplicitReturns": false,
         "typeRoots": [ "node_modules/@types" ],
     },
-    "include": [ "scripts" ],
+    "include": [ "scripts/webpack" ],
 }
   

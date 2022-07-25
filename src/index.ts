@@ -1,8 +1,9 @@
-import * as api from './api';
+import { onClick } from './api';
+
+export const mScript = {
+    onClick,
+};
 
 window.addEventListener('load', () => {
-    window.mScript = api;
-
-    return api;
+    window.mScript = mScript;
 });
-

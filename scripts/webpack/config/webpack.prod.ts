@@ -9,13 +9,13 @@ import * as modules from '../modules';
 
 export const getProdConfig = () => {
     return merge(
+        modules.cleanDirectories(),
         getCommonConfig(),
         {
             mode:    'production',
             devtool: false,
         },
-        modules.cleanDirectories(),
         modules.connectBuildProgressIndicator(),
-        modules.optimizeBuild(),
+        // modules.optimizeBuild(),
     );
 };

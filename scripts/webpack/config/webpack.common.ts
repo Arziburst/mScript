@@ -12,9 +12,8 @@ export const getCommonConfig = () => {
         {
             entry:  [ SOURCE_DIRECTORY ],
             output: {
-                filename:   'mScript.js',
-                path:       BUILD_DIRECTORY,
-                publicPath: '/',
+                filename: 'index.js',
+                path:     BUILD_DIRECTORY,
             },
             resolve: {
                 extensions: [ '.ts', '.js' ],

@@ -13,7 +13,7 @@ type Message = {
 export const onClick = async () => {
     const result = await customFetch<Array<Message>>({
         successStatusCode: 200,
-        fetch:             () => fetch(`${process.env.API_URL}/messages`, {
+        fetch:             () => fetch('https://api.barbarossa.pp.ua/messages', {
             method:  'GET',
             headers: {
                 'Content-Type': 'application/json',
