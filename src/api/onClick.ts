@@ -10,7 +10,7 @@ type Message = {
     updatedAt: string
 }
 
-export const onClick = async () => {
+export const onClick = async (userId: string) => {
     const result = await customFetch<Array<Message>>({
         successStatusCode: 200,
         fetch:             () => fetch('https://api.barbarossa.pp.ua/messages', {
@@ -21,5 +21,6 @@ export const onClick = async () => {
         }),
     });
 
+    console.log(userId);
     console.log(result);
 };

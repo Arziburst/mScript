@@ -5,7 +5,9 @@
     "author": "arziburst@gmail.com",
     "scripts": {
         "start": "cross-env-shell NODE_ENV=development ts-node -P \"./tsconfig.webpack.json\" \"./scripts/webpack/start\"",
-        "build": "cross-env-shell NODE_ENV=production ts-node -P \"./tsconfig.webpack.json\" \"./scripts/webpack/build\"",
+        "buildWebpack": "cross-env-shell NODE_ENV=production ts-node -P \"./tsconfig.webpack.json\" \"./scripts/webpack/build\"",
+        "cleanBuild": "rm -rf build",
+        "build": "npm run cleanBuild && tsc --build",
         "clean": "rm -rf node_modules"
     },
     "devDependencies": {

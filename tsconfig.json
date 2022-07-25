@@ -6,7 +6,7 @@
         "declaration": true,
         "declarationDir": "build/types",
         "declarationMap": true,
-        
+
         "sourceMap": false,
 
         "allowJs": true,
