@@ -12,10 +12,14 @@ export const getProdConfig = () => {
         modules.cleanDirectories(),
         getCommonConfig(),
         {
+            // target:  'web',
             mode:    'production',
             devtool: false,
+            output:  {
+                library: 'mScript',
+            },
         },
         modules.connectBuildProgressIndicator(),
-        // modules.optimizeBuild(),
+        modules.optimizeBuild(),
     );
 };

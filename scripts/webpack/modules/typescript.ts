@@ -1,9 +1,6 @@
 // Core
 import { Configuration } from 'webpack';
 
-// Tools
-import { nodeModulePath } from '../constants';
-
 export const loadTypeScript = (): Configuration => ({
     module: {
         rules: [
@@ -14,12 +11,6 @@ export const loadTypeScript = (): Configuration => ({
                 use:     {
                     loader: 'ts-loader',
                 },
-            },
-            {
-                enforce: 'pre',
-                test:    /\.js$/,
-                loader:  'source-map-loader',
-                exclude: [ nodeModulePath('') ],
             },
         ],
     },

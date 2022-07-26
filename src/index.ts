@@ -1,9 +1,27 @@
-import { onClick } from './api';
+// Tools
+import { customFetch } from './tools';
 
-export const mScript = {
-    onClick,
+// Types
+import { onEventPayload } from './types';
+
+export const onEvent = async (payload: onEventPayload) => {
+    await customFetch<boolean>({
+        successStatusCode: 201,
+        url:               `${process.env.API_URL}/events`,
+        requestOptions:    {
+            method:  'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: payload,
+        },
+    });
 };
 
-window.addEventListener('load', () => {
-    window.mScript = mScript;
-});
+if (window) {
+    window.mScript = {
+        onEvent,
+    };
+}
+
+exports.onEvent = onEvent;

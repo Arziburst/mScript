@@ -1,1 +1,0 @@
-export { onClick } from './onClick';

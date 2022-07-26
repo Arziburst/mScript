@@ -1,27 +1,40 @@
-
 // Tools
 import { ControlledError, IControlledError } from './controlledError';
 
 // Types
 type FetchOptions = {
-    fetch: () => ReturnType<typeof fetch>;
+    url: string,
+    requestOptions: {
+        method: string,
+        headers: any,
+        body?: any
+    };
     successStatusCode: number;
 }
 
 type CFetchContact = <SuccessData>(fetchOptions: FetchOptions) => Promise<SuccessData | IControlledError | undefined>
 
 export const customFetch: CFetchContact = async (fetchOptions) => {
-    try {
-        const response = await fetchOptions.fetch();
+    const { requestOptions, successStatusCode } = fetchOptions;
 
-        if (response.status !== fetchOptions.successStatusCode) {
+    const requestWithParcedBody = {
+        ...requestOptions,
+        body: JSON.stringify(requestOptions.body),
+    };
+
+    try {
+        let response: any = void 0;
+
+        response = await fetch(fetchOptions.url, requestWithParcedBody);
+
+        if (response.status !== successStatusCode) {
             // ---------- FAIL START ----------
-            let errorData = void 0;
+            let errorData: any = void 0;
 
             try {
                 errorData = await response.json();
             } catch {
-                throw new ControlledError({ message: 'Parsing error' });
+                throw new ControlledError({ message: 'Parsing 1 error' });
             }
 
             throw new ControlledError({
@@ -33,20 +46,20 @@ export const customFetch: CFetchContact = async (fetchOptions) => {
         }
 
         // ---------- SUCCESS START ----------
-        let successData = void 0;
+        let successData: any = void 0;
 
         try {
             successData = await response.json();
 
             return successData;
         } catch {
-            throw new ControlledError({ message: 'Parsing error' });
+            throw new ControlledError({ message: 'Parsing 2 error' });
         }
         // ---------- SUCCESS END ----------
     } catch (error: any) {
         const customError: IControlledError = error;
 
-        console.log(customError);
+        console.log({ ...customError });
 
         return customError;
     }
