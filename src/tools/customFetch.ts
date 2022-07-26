@@ -2,15 +2,7 @@
 import { ControlledError, IControlledError } from './controlledError';
 
 // Types
-type FetchOptions = {
-    url: string,
-    requestOptions: {
-        method: string,
-        headers: any,
-        body?: any
-    };
-    successStatusCode: number;
-}
+import { FetchOptions } from '../types';
 
 type CFetchContact = <SuccessData>(fetchOptions: FetchOptions) => Promise<SuccessData | IControlledError | undefined>
 
@@ -50,6 +42,13 @@ export const customFetch: CFetchContact = async (fetchOptions) => {
 
         try {
             successData = await response.json();
+
+            if (process.env.NODE_ENV === 'development') {
+                console.warn('Success request', {
+                    eventType: fetchOptions.requestOptions.body.eventType,
+                    successData,
+                });
+            }
 
             return successData;
         } catch {
