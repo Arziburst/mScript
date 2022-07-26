@@ -1,7 +1,7 @@
 {
-    "name": "mscript",
-    "version": "1.1.0",
-    "description": "env for dev and test web scripts",
+    "name": "metric-script",
+    "version": "0.1.0",
+    "description": "module for metric-script",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "files": [ "dist" ],
