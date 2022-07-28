@@ -4,7 +4,7 @@ import { resolve } from 'path';
 
 // Network
 export const HOST = 'localhost';
-export const PORT = 3333;
+export const PORT = 3100;
 
 // Paths
 export { PROJECT_ROOT };
